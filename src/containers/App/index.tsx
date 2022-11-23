@@ -18,11 +18,11 @@ import {
 } from '../../utils/services/getError/selectors';
 
 import {
-  makeDataSelector as makeDataSelectorEmployees
+  makeDataSelector as makeDataSelectorMenu
 } from '../../utils/services/menu/selectors';
 import reducerError from '../../utils/services/getError/reducer';
-import reducerEmployees from '../../utils/services/menu/reducer';
-import sagaEmployees from '../../utils/services/menu/saga';
+import reducerMenu from '../../utils/services/menu/reducer';
+import sagaMenu from '../../utils/services/menu/saga';
 import {
   getMenuRequestAction,
 } from '../../utils/services/menu/actions';
@@ -52,8 +52,8 @@ const App = ({
   const [toast, setToast] = useState(false)
 
   useInjectReducer({ key: 'error', reducer: reducerError })
-  useInjectReducer({ key: 'menu', reducer: reducerEmployees })
-  useInjectSaga({ key: 'menu', saga: sagaEmployees })
+  useInjectReducer({ key: 'menu', reducer: reducerMenu })
+  useInjectSaga({ key: 'menu', saga: sagaMenu })
 
   useEffect(() => {
     getMenuRequestActionHandler()
@@ -106,7 +106,7 @@ const App = ({
 
 const mapStateToProps = createStructuredSelector({
   error: makeDataSelectorError(),
-  menu: makeDataSelectorEmployees()
+  menu: makeDataSelectorMenu()
 });
 
 export const mapDispatchToProps = (dispatch: IFunc) => ({

@@ -1,14 +1,5 @@
 
+export type IMenu = string | null
 
-export interface IMenu {
-  email: string;
-  firstName: string;
-  lastName: string;
-  image: string;
-  age: number | string;
-  gender: string;
-}
-
-export interface Props extends IMenu {
-  id: number;
+export interface Props extends Array<Props | IMenu> {
 }
