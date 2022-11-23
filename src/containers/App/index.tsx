@@ -1,0 +1,125 @@
+import React, { memo, useEffect, useState } from 'react';
+import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
+import get from "lodash/get";
+
+import routes from '../../utils/routes';
+import {
+  connect,
+  createStructuredSelector,
+  compose,
+  useInjectReducer,
+  useInjectSaga,
+  searchRoute
+} from '../../utils/services';
+import Context from '../../utils/context';
+
+import {
+  makeDataSelector as makeDataSelectorError
+} from '../../utils/services/getError/selectors';
+
+import {
+  makeDataSelector as makeDataSelectorEmployees
+} from '../../utils/services/menu/selectors';
+import reducerError from '../../utils/services/getError/reducer';
+import reducerEmployees from '../../utils/services/menu/reducer';
+import sagaEmployees from '../../utils/services/menu/saga';
+import {
+  getMenuRequestAction,
+} from '../../utils/services/menu/actions';
+
+import Container from './styles';
+import {
+  PropsApp, PropsRoute, IFunc
+} from '../../utils/interfaces';
+
+import Toast from '../../components/Toast';
+import Loading from "../../components/Loading";
+
+const App = ({
+  error,
+  menu,
+  getMenuRequestActionHandler,
+}: PropsApp) => {
+  const location = useLocation()
+  const navigate = useNavigate()
+  console.log({ menu })
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const [data, setData] = useState<any>({
+    loading: false,
+    data: [],
+    message: null
+  })
+  const [toast, setToast] = useState(false)
+
+  useInjectReducer({ key: 'error', reducer: reducerError })
+  useInjectReducer({ key: 'menu', reducer: reducerEmployees })
+  useInjectSaga({ key: 'menu', saga: sagaEmployees })
+
+  useEffect(() => {
+    getMenuRequestActionHandler()
+  }, [])
+
+  useEffect(() => {
+    setToast(!!data.message)
+  }, [data.message])
+
+  useEffect(() => {
+    if (location.pathname === '/') {
+      navigate(searchRoute('home'))
+    }
+  }, [location.pathname])
+
+  useEffect(() => {
+    setData({
+      loading: get(menu, 'loading', true),
+      data: get(menu, 'data', []),
+      message: get(menu, 'message', null),
+    })
+  }, [menu])
+
+  return (
+    <Context.Provider
+      value={{
+        menu: data.data,
+        message: data.message
+      }}>
+      <Container fluid className="d-flex flex-nowrap p-0">
+        <Toast open={toast} message={error} onClose={() => setToast(false)} />
+
+        <div className="main-panel">
+          <Container.Content className={`${data.loading ? 'p-0' : ''}`}>
+            <Loading show={data.loading} />
+
+            {!data.loading &&
+              <Routes>
+                {routes.map((route: PropsRoute, index: number) => (
+                  <Route key={index} path={route.path} element={route.component} />
+                ))}
+              </Routes>
+            }
+          </Container.Content>
+        </div>
+      </Container>
+    </Context.Provider>
+  )
+}
+
+const mapStateToProps = createStructuredSelector({
+  error: makeDataSelectorError(),
+  menu: makeDataSelectorEmployees()
+});
+
+export const mapDispatchToProps = (dispatch: IFunc) => ({
+  getMenuRequestActionHandler: () => dispatch(getMenuRequestAction()),
+});
+
+const withConnect = connect(
+  mapStateToProps,
+  mapDispatchToProps
+);
+
+export default compose(
+  withConnect,
+  memo
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+)(App) as React.FunctionComponent<any>;
