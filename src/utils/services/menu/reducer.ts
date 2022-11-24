@@ -15,9 +15,6 @@ import {
 import {
   PropsMenu,
 } from '../../interfaces';
-import {
-  setStorage
-} from '..';
 
 export const initialState = {
   loading: false,
@@ -47,8 +44,6 @@ const reducer = (state = initialState, action: ACTION) =>
       case GET_MENU_ACTION_SUCCESS:
         draft.loading = false
         draft.data = action.list
-
-        setStorage('menu', draft.data)
         break
 
       case ACTION_ERROR:

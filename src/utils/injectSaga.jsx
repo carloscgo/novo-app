@@ -15,7 +15,7 @@ import getInjectors from './sagaInjectors';
  *   - constants.RESTART_ON_REMOUNT — the saga will be started on component mount and
  *   cancelled with `task.cancel()` on component unmount for improved performance,
  *   - constants.ONCE_TILL_UNMOUNT — behaves like 'RESTART_ON_REMOUNT' but never runs it again.
- * @return {object} valud
+ * @return {object} value
  */
 export default ({ key, saga, mode }) => WrappedComponent => {
   /**
@@ -30,7 +30,7 @@ export default ({ key, saga, mode }) => WrappedComponent => {
       WrappedComponent.name ||
       'Component'})`;
 
-    constructor (props, context) {
+    constructor(props, context) {
       super(props, context)
 
       this.injectors = getInjectors(context.store)
@@ -38,11 +38,11 @@ export default ({ key, saga, mode }) => WrappedComponent => {
       this.injectors.injectSaga(key, { saga, mode }, this.props)
     }
 
-    componentWillUnmount () {
+    componentWillUnmount() {
       this.injectors.ejectSaga(key)
     }
 
-    render () {
+    render() {
       return <WrappedComponent {...this.props} />
     }
   }

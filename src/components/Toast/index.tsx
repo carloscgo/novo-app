@@ -11,9 +11,9 @@ const Toast = ({ open, message, onClose }: PropsToast) => {
   }, [open])
 
   return (
-    <ToastContainer position="middle-center">
-      <BToast show={show} delay={3000} autohide onClose={onClose} bg="info">
-        <BToast.Body>{message}</BToast.Body>
+    <ToastContainer position="top-end">
+      <BToast show={show} delay={3000} autohide onClose={onClose} bg="danger">
+        <BToast.Body className='text-white'>{message}</BToast.Body>
       </BToast>
     </ToastContainer>
   )

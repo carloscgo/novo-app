@@ -20,6 +20,26 @@ import {
   GET_MENU_ACTION_REQUEST,
 } from './constants';
 
+import {
+  PropsMenu,
+} from '../../../utils/interfaces';
+
+/**
+ * @param {Array<PropsMenu>} snapshot - Menu
+ * @return {array} list
+ */
+export const setMenu = (snapshot: PropsMenu[]) => {
+  const list: PropsMenu[] = []
+
+  snapshot.forEach((doc: any) => {
+    const menu = doc.data()
+
+    list.push(menu)
+  })
+
+  return list
+}
+
 /**
  * @function getAll
  * @yields getMenuRequestAction / getErrorAction
@@ -36,9 +56,9 @@ export function* getAll(): any {
       yield put(getErrorAction(error))
     }
 
-    const { lista } = snapshot.data()
+    const list: PropsMenu[] = setMenu(snapshot)
 
-    yield put(getMenuSuccessAction(lista))
+    yield put(getMenuSuccessAction(list))
   } catch (err: unknown) {
     yield put(getErrorAction(mapError(err) as string))
   }

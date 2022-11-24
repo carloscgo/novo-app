@@ -34,6 +34,7 @@ import {
 
 import Toast from '../../components/Toast';
 import Loading from "../../components/Loading";
+import Menu from "../../components/Menu";
 
 const App = ({
   error,
@@ -47,7 +48,6 @@ const App = ({
   const [data, setData] = useState<any>({
     loading: false,
     data: [],
-    message: null
   })
   const [toast, setToast] = useState(false)
 
@@ -60,8 +60,8 @@ const App = ({
   }, [])
 
   useEffect(() => {
-    setToast(!!data.message)
-  }, [data.message])
+    setToast(!!error)
+  }, [error])
 
   useEffect(() => {
     if (location.pathname === '/') {
@@ -73,7 +73,6 @@ const App = ({
     setData({
       loading: get(menu, 'loading', true),
       data: get(menu, 'data', []),
-      message: get(menu, 'message', null),
     })
   }, [menu])
 
@@ -89,6 +88,8 @@ const App = ({
         <div className="main-panel">
           <Container.Content className={`${data.loading ? 'p-0' : ''}`}>
             <Loading show={data.loading} />
+
+            <Menu items={data.data} onClick={(e) => console.log(e)} selection={null} />
 
             {!data.loading &&
               <Routes>

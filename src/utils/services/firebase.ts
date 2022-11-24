@@ -22,8 +22,8 @@ const store = initializeApp({
 const db = getFirestore(store);
 
 class DataService {
-  private error: string = ''
-  private PATH: string = 'menu'
+  private error = ''
+  private PATH = 'menu'
 
   getError() {
     return this.error
