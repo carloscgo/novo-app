@@ -2,6 +2,8 @@
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
+import { startCase, camelCase } from 'lodash';
+
 import { useInjectReducer } from '../injectReducer';
 import { useInjectSaga } from '../injectSaga';
 import routes from '../routes';
@@ -17,6 +19,8 @@ const mapError = (e: unknown) => {
   }
 }
 
+const pascalCase = (str: string): string => startCase(camelCase(str))
+
 export {
   connect,
   createStructuredSelector,
@@ -25,5 +29,6 @@ export {
   useInjectSaga,
   searchRoute,
   mapError,
-  DataService
+  DataService,
+  pascalCase
 }
