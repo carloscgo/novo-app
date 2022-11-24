@@ -1,3 +1,4 @@
+import DOMPurify from 'dompurify'
 import {
   PropsFooter
 } from '../../utils/interfaces';
@@ -7,7 +8,7 @@ const Footer = ({ copyright, logoLeft, logoRight }: PropsFooter) => {
   return (
     <Container fluid className="p-0">
       <Logo>{logoLeft}</Logo>
-      <Copyright>{copyright}</Copyright>
+      <Copyright dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(copyright) }} />
       <Logo>{logoRight}</Logo>
     </Container>
   )

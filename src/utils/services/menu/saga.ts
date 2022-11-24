@@ -25,6 +25,7 @@ import {
 } from '../../../utils/interfaces';
 
 /**
+ * @function setMenu
  * @param {Array<PropsMenu>} snapshot - Menu
  * @return {array} list
  */
@@ -41,6 +42,22 @@ export const setMenu = (snapshot: PropsMenu[]) => {
 }
 
 /**
+ * @function getMenu
+ * @yields setMenu / getErrorAction
+ */
+export function* getMenu(): any {
+  const snapshot = yield DataService.getAll()
+
+  const error = yield DataService.getError()
+
+  if (error) {
+    yield put(getErrorAction(error))
+  }
+
+  return yield setMenu(snapshot)
+}
+
+/**
  * @function getAll
  * @yields getMenuRequestAction / getErrorAction
  */
@@ -48,15 +65,7 @@ export function* getAll(): any {
   try {
     yield put(cleanErrorAction())
 
-    const snapshot = yield DataService.getAll()
-
-    const error = DataService.getError()
-
-    if (error) {
-      yield put(getErrorAction(error))
-    }
-
-    const list: PropsMenu[] = setMenu(snapshot)
+    const list: PropsMenu[] = yield getMenu()
 
     yield put(getMenuSuccessAction(list))
   } catch (err: unknown) {

@@ -4,8 +4,8 @@ import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import { startCase, camelCase } from 'lodash';
 
-import { useInjectReducer } from '../injectReducer';
-import { useInjectSaga } from '../injectSaga';
+import { useInjectReducer } from '../store/injectReducer';
+import { useInjectSaga } from '../store/injectSaga';
 import routes from '../routes';
 import DataService from './firebase';
 

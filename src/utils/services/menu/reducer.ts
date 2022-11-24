@@ -23,18 +23,15 @@ import {
 export const initialState = {
   loading: false,
   data: [],
-  message: null
 }
 
 type ACTION = {
   type: string,
   list: Array<PropsMenu>,
-  message: string,
 }
 type DRAFT = {
   loading: boolean,
   data: Array<PropsMenu>,
-  message: string | null,
 }
 
 export const recursive = (menu: any[], parentId: string, menuItems: any[] = []) => {
@@ -61,7 +58,6 @@ const reducer = (state = initialState, action: ACTION) =>
     switch (action.type) {
       case GET_MENU_ACTION_REQUEST:
         draft.loading = true
-        draft.message = null
         break
 
       case GET_MENU_ACTION_SUCCESS:
@@ -72,9 +68,6 @@ const reducer = (state = initialState, action: ACTION) =>
       case ACTION_ERROR:
         draft.loading = false
         break
-
-      default:
-        return initialState
     }
   });
 
