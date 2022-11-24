@@ -7,6 +7,7 @@ const GlobalStyle = createGlobalStyle`
   --text-white: #fff;
   --bg-white: #fff;
   --text-black: #2c2b2b;
+  --bg-main: #faf8f8;
 }
 `;
 

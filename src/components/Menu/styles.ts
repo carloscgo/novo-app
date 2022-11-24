@@ -4,9 +4,10 @@ import { NavDropdown } from 'react-bootstrap';
 
 const Container = styled.div`
   width: 100%;
-  height: 50px;
+  height: 25px;
   background-color: var(--bg-white);
   display: flex;
+  align-items: center;
 
   .item-width {
     min-width: 120px;
@@ -16,7 +17,7 @@ const Container = styled.div`
 const LinkMenu = styled(Link)`
   text-decoration: none !important;
   color: var(--text-black);
-  border-bottom: 2px solid transparent;
+  border-bottom: 3px solid transparent;
   padding-bottom: 10px;
 
   &:hover {
@@ -43,6 +44,14 @@ const DropdownMenu = styled(NavDropdown)`
   &:hover {
     color: var(--text-black);
     border-bottom: 2px solid var(--main-color);
+  }
+
+  a {
+    color: var(--text-black);
+    
+      &:hover {
+      color: var(--text-black);
+    }
   }
 
   .dropdown-toggle {

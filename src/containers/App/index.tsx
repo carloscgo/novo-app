@@ -35,6 +35,10 @@ import {
 import Toast from '../../components/Toast';
 import Loading from "../../components/Loading";
 import Header from "../../components/Header";
+import Footer from "../../components/Footer";
+import Logo from "../../components/Logo";
+
+import image from '../../assets/react.svg'
 
 const App = ({
   error,
@@ -76,6 +80,8 @@ const App = ({
     })
   }, [menu])
 
+  const logo = <Logo width={120} height={120} image={image} />
+
   return (
     <Context.Provider
       value={{
@@ -87,19 +93,19 @@ const App = ({
 
         <Toast open={toast} message={error} onClose={() => setToast(false)} />
 
-        <div className="main-panel">
-          <Container.Content className={`${data.loading ? 'p-0' : ''}`}>
-            <Loading show={data.loading} />
+        <Container.Content className={`${data.loading ? 'p-0' : ''}`}>
+          <Loading show={data.loading} />
 
-            {!data.loading &&
-              <Routes>
-                {routes.map((route: PropsRoute, index: number) => (
-                  <Route key={index} path={route.path} element={route.component} />
-                ))}
-              </Routes>
-            }
-          </Container.Content>
-        </div>
+          {!data.loading &&
+            <Routes>
+              {routes.map((route: PropsRoute, index: number) => (
+                <Route key={index} path={route.path} element={route.component} />
+              ))}
+            </Routes>
+          }
+        </Container.Content>
+
+        <Footer logoLeft={logo} logoRight={logo} copyright="Novopayment Inc. All right reserved." />
       </Container>
     </Context.Provider>
   )
