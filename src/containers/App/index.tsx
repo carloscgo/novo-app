@@ -3,7 +3,7 @@ import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
 import get from "lodash/get";
 
 import routes from '../../utils/routes';
-import { VITE_APP } from '../../utils/constants';
+import { VITE_APP, USER_NAME, COPYRIGHT } from '../../utils/constants';
 import {
   connect,
   createStructuredSelector,
@@ -39,8 +39,6 @@ import Footer from "../../components/Footer";
 import Logo from "../../components/Logo";
 
 import image from '../../assets/react.svg'
-
-export const USER_NAME = 'Carlos Camacho'
 
 const App = ({
   error,
@@ -102,7 +100,7 @@ const App = ({
         }
       </Container.Content>
 
-      <Footer logoLeft={logo} logoRight={logo} copyright="&copy 2022 Novopayment Inc. All right reserved." />
+      <Footer logoLeft={logo} logoRight={logo} copyright={COPYRIGHT} />
     </Container>
   )
 }
