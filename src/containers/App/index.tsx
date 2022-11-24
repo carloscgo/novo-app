@@ -43,7 +43,7 @@ const App = ({
 }: PropsApp) => {
   const location = useLocation()
   const navigate = useNavigate()
-  console.log({ menu })
+
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [data, setData] = useState<any>({
     loading: false,

@@ -3,6 +3,7 @@
  */
 
 import produce from 'immer';
+import isArray from 'lodash/isArray';
 
 import {
   GET_MENU_ACTION_REQUEST,
@@ -33,6 +34,25 @@ type DRAFT = {
   message: string | null,
 }
 
+export const recursive = (menu: any[], parentId: string, menuItems: any[] = []) => {
+  menu.filter((element: any) => element).forEach((element: any, key: number) => {
+    Object.keys(element).forEach((item: string | number, index: number) => {
+      if (item) {
+        const childrens = element[item]
+        const id = `${parentId}-${index}-${key}`
+
+        menuItems.push({
+          id,
+          name: item as string,
+          children: isArray(childrens) && (Object.keys(childrens).length) ? recursive(childrens, id, menuItems[index]) : null
+        })
+      }
+    })
+  })
+
+  return menuItems
+}
+
 const reducer = (state = initialState, action: ACTION) =>
   produce(state, (draft: DRAFT) => {
     switch (action.type) {
@@ -43,7 +63,7 @@ const reducer = (state = initialState, action: ACTION) =>
 
       case GET_MENU_ACTION_SUCCESS:
         draft.loading = false
-        draft.data = action.list
+        draft.data = recursive(action.list, '0')
         break
 
       case ACTION_ERROR:
