@@ -3,7 +3,7 @@ import Container from 'react-bootstrap/Container';
 
 const App: any = styled(Container)`
   height: 100vh;
-  min-width: 100vh;
+  flex-direction: column;
 
   .logo-mini {
     text-decoration: none;

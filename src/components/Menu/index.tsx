@@ -1,28 +1,37 @@
+import { Nav } from 'react-bootstrap';
 import isArray from 'lodash/isArray';
 import {
   CProps, TItem
 } from '../../utils/interfaces';
-import { Link } from './styles';
+import { LinkMenu, DropdownMenu, Container } from './styles';
 
 const Menu = ({ items, onClick, selection }: CProps) => {
-  return (
-    <ul>
-      {isArray(items) && items.map((item: TItem) =>
-        <li key={item.id} className={(item.id === selection?.id ? 'selected' : null) as string}>
-          <Link href="#" onClick={() => onClick(item)}>
-            {item.name}
-          </Link>
+  const hasChildren = (item: TItem) => isArray(item.children) && !!item.children.length
 
-          {isArray(item.children) && item.children.length
-            ? <Menu
-              items={item.children}
-              onClick={onClick}
-              selection={selection}
-            />
-            : null}
-        </li>
+  return (
+    <Container>
+      {isArray(items) && items.map((item: TItem) =>
+        <Nav key={item.id} className={`item-width align-items-start ` + (item.id === selection?.id ? 'selected' : null) as string}>
+          {hasChildren(item) && (
+            <DropdownMenu title={item.name} id={`${item.id}-nav-dropdown`} renderMenuOnMount={true}>
+              <Menu
+                items={item.children}
+                onClick={onClick}
+                selection={selection}
+              />
+            </DropdownMenu>
+          )}
+
+          {!hasChildren(item) && (
+            <Nav.Link as='div'>
+              <LinkMenu to="#" onClick={() => onClick(item)}>
+                {item.name}
+              </LinkMenu>
+            </Nav.Link>
+          )}
+        </Nav>
       )}
-    </ul>
+    </Container>
   )
 }
 

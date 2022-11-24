@@ -3,7 +3,7 @@
  */
 
 import produce from 'immer';
-import isArray from 'lodash/';
+import { isArray, orderBy } from 'lodash';
 
 import {
   GET_MENU_ACTION_REQUEST,
@@ -66,7 +66,7 @@ const reducer = (state = initialState, action: ACTION) =>
 
       case GET_MENU_ACTION_SUCCESS:
         draft.loading = false
-        draft.data = recursive(action.list, '0')
+        draft.data = orderBy(recursive(action.list, '0'), ['name'], ['asc'])
         break
 
       case ACTION_ERROR:

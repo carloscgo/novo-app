@@ -34,7 +34,7 @@ import {
 
 import Toast from '../../components/Toast';
 import Loading from "../../components/Loading";
-import Menu from "../../components/Menu";
+import Header from "../../components/Header";
 
 const App = ({
   error,
@@ -83,13 +83,13 @@ const App = ({
         message: data.message
       }}>
       <Container fluid className="d-flex flex-nowrap p-0">
+        <Header brand='Nova App' userName='Carlos Camacho' menu={data.data} />
+
         <Toast open={toast} message={error} onClose={() => setToast(false)} />
 
         <div className="main-panel">
           <Container.Content className={`${data.loading ? 'p-0' : ''}`}>
             <Loading show={data.loading} />
-
-            <Menu items={data.data} onClick={(e) => console.log(e)} selection={null} />
 
             {!data.loading &&
               <Routes>

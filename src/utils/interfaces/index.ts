@@ -5,6 +5,7 @@ import { Props as PropsSidebar } from './sidebar';
 import { Props as PropsConfig } from './config';
 import { Props as PropsMenu, IMenu, TItem, CProps } from './menu';
 import { Props as PropsToast } from './toast';
+import { Props as PropsHeader } from './header';
 import { IFunc, ILoading } from './common';
 
 export type {
@@ -15,6 +16,7 @@ export type {
   PropsConfig,
   PropsMenu,
   PropsToast,
+  PropsHeader,
   IFunc,
   ILoading,
   IMenu,
