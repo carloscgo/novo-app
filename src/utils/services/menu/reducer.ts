@@ -3,7 +3,7 @@
  */
 
 import produce from 'immer';
-import isArray from 'lodash/isArray';
+import isArray from 'lodash/';
 
 import {
   GET_MENU_ACTION_REQUEST,
@@ -16,6 +16,9 @@ import {
 import {
   PropsMenu,
 } from '../../interfaces';
+import {
+  pascalCase,
+} from '../../services';
 
 export const initialState = {
   loading: false,
@@ -43,7 +46,7 @@ export const recursive = (menu: any[], parentId: string, menuItems: any[] = []) 
 
         menuItems.push({
           id,
-          name: item as string,
+          name: pascalCase(item as string),
           children: isArray(childrens) && (Object.keys(childrens).length) ? recursive(childrens, id, menuItems[index]) : null
         })
       }
