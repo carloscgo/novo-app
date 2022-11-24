@@ -3,7 +3,7 @@
  */
 
 import produce from 'immer';
-import isArray from 'lodash/';
+import { isArray, orderBy } from 'lodash';
 
 import {
   GET_MENU_ACTION_REQUEST,
@@ -23,18 +23,15 @@ import {
 export const initialState = {
   loading: false,
   data: [],
-  message: null
 }
 
 type ACTION = {
   type: string,
   list: Array<PropsMenu>,
-  message: string,
 }
 type DRAFT = {
   loading: boolean,
   data: Array<PropsMenu>,
-  message: string | null,
 }
 
 export const recursive = (menu: any[], parentId: string, menuItems: any[] = []) => {
@@ -61,20 +58,16 @@ const reducer = (state = initialState, action: ACTION) =>
     switch (action.type) {
       case GET_MENU_ACTION_REQUEST:
         draft.loading = true
-        draft.message = null
         break
 
       case GET_MENU_ACTION_SUCCESS:
         draft.loading = false
-        draft.data = recursive(action.list, '0')
+        draft.data = orderBy(recursive(action.list, '0'), ['name'], ['asc'])
         break
 
       case ACTION_ERROR:
         draft.loading = false
         break
-
-      default:
-        return initialState
     }
   });
 

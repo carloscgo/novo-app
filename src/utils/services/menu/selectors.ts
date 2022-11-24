@@ -22,8 +22,5 @@ export const selectDomain = (state: STATE) => state.menu || initialState;
 export const makeDataSelector: any = () =>
   createSelector(
     selectDomain,
-    substate => ({
-      ...substate,
-      data: substate.data
-    })
+    substate => substate
   );

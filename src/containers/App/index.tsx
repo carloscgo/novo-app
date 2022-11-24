@@ -3,6 +3,7 @@ import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
 import get from "lodash/get";
 
 import routes from '../../utils/routes';
+import { VITE_APP, USER_NAME, COPYRIGHT } from '../../utils/constants';
 import {
   connect,
   createStructuredSelector,
@@ -11,7 +12,6 @@ import {
   useInjectSaga,
   searchRoute
 } from '../../utils/services';
-import Context from '../../utils/context';
 
 import {
   makeDataSelector as makeDataSelectorError
@@ -34,7 +34,11 @@ import {
 
 import Toast from '../../components/Toast';
 import Loading from "../../components/Loading";
-import Menu from "../../components/Menu";
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
+import Logo from "../../components/Logo";
+
+import image from '../../assets/react.svg'
 
 const App = ({
   error,
@@ -76,32 +80,28 @@ const App = ({
     })
   }, [menu])
 
+  const logo = <Logo width={120} height={120} image={image} />
+
   return (
-    <Context.Provider
-      value={{
-        menu: data.data,
-        message: data.message
-      }}>
-      <Container fluid className="d-flex flex-nowrap p-0">
-        <Toast open={toast} message={error} onClose={() => setToast(false)} />
+    <Container fluid className="d-flex flex-nowrap p-0">
+      <Header brand={VITE_APP.APP_NAME} userName={USER_NAME} menu={data.data} />
 
-        <div className="main-panel">
-          <Container.Content className={`${data.loading ? 'p-0' : ''}`}>
-            <Loading show={data.loading} />
+      <Toast open={toast} message={error} onClose={() => setToast(false)} />
 
-            <Menu items={data.data} onClick={(e) => console.log(e)} selection={null} />
+      <Container.Content className={`${data.loading ? 'p-0' : ''}`}>
+        <Loading show={data.loading} />
 
-            {!data.loading &&
-              <Routes>
-                {routes.map((route: PropsRoute, index: number) => (
-                  <Route key={index} path={route.path} element={route.component} />
-                ))}
-              </Routes>
-            }
-          </Container.Content>
-        </div>
-      </Container>
-    </Context.Provider>
+        {!data.loading &&
+          <Routes>
+            {routes.map((route: PropsRoute, index: number) => (
+              <Route key={index} path={route.path} element={route.component} />
+            ))}
+          </Routes>
+        }
+      </Container.Content>
+
+      <Footer logoLeft={logo} logoRight={logo} copyright={COPYRIGHT} />
+    </Container>
   )
 }
 

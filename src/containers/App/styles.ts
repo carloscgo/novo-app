@@ -3,16 +3,13 @@ import Container from 'react-bootstrap/Container';
 
 const App: any = styled(Container)`
   height: 100vh;
-  min-width: 100vh;
-
-  .logo-mini {
-    text-decoration: none;
-  }
+  flex-direction: column;
 `;
 
 App.Content = styled.div`
-  padding: 30px 15px;
-  min-height: calc(100% - 123px);
+  padding: 30px;
+  flex-grow: 1;
+  background-color: var(--bg-main);
 `;
 
 export default App;

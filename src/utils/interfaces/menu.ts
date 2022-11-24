@@ -8,7 +8,7 @@ export type Props = Array<Props | IMenu>
 export type TItem = {
   id: string,
   name: string,
-  children: null | TItem[]
+  children: TItem[]
 }
 
 export interface CProps {

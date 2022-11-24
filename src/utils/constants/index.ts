@@ -29,6 +29,12 @@ const VITE_APP: IConfig = {
     APPID: FB_APPID,
   }
 }
+
+const USER_NAME = 'Carlos Camacho'
+const COPYRIGHT = "&copy 2022 Novopayment Inc. All right reserved."
+
 export {
   VITE_APP,
+  USER_NAME,
+  COPYRIGHT,
 }
