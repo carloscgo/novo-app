@@ -1,5 +1,6 @@
-import styled from 'styled-components';
+import 'regenerator-runtime/runtime'
 import Container from 'react-bootstrap/Container';
+import styled from 'styled-components';
 
 const App: any = styled(Container)`
   height: 100vh;

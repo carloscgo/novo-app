@@ -1,5 +1,5 @@
-import styled, { css } from 'styled-components';
 import Container from 'react-bootstrap/Container';
+import styled, { css } from 'styled-components';
 
 const center = css`
   display: flex;

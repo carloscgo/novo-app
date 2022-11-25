@@ -1,7 +1,9 @@
 import { ReactElement } from 'react';
 
+type TLogo = ReactElement | React.ReactNode
+
 export interface Props {
-  logoLeft: ReactElement;
+  logoLeft: TLogo;
   copyright: string;
-  logoRight: ReactElement;
+  logoRight: TLogo;
 }

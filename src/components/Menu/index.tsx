@@ -1,4 +1,4 @@
-import { Nav } from 'react-bootstrap';
+import Nav from 'react-bootstrap/Nav';
 import isArray from 'lodash/isArray';
 import {
   CProps, TItem
@@ -24,7 +24,7 @@ const Menu = ({ items, onClick, selection }: CProps) => {
 
           {!hasChildren(item) && (
             <Nav.Link as='div'>
-              <LinkMenu to="#" onClick={() => onClick(item)}>
+              <LinkMenu to="#" aria-label={`link-menu-${item.id}`} onClick={() => onClick(item)}>
                 {item.name}
               </LinkMenu>
             </Nav.Link>

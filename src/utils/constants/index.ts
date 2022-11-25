@@ -1,9 +1,5 @@
 import { PropsConfig as IConfig } from '../interfaces'
 
-export const DAEMON = '@@saga-injector/daemon'
-export const ONCE_TILL_UNMOUNT = '@@saga-injector/once-till-unmount'
-export const RESTART_ON_REMOUNT = '@@saga-injector/restart-on-remount'
-
 const {
   VITE_APP_NAME: APP_NAME,
   VITE_GC_KEY: GC_KEY,
@@ -30,10 +26,17 @@ const VITE_APP: IConfig = {
   }
 }
 
-const USER_NAME = 'Carlos Camacho'
-const COPYRIGHT = "&copy 2022 Novopayment Inc. All right reserved."
+const USER_NAME: string = 'Carlos Camacho'
+const COPYRIGHT: string = "&copy 2022 Novopayment Inc. All right reserved."
+
+const DAEMON: string = '@@saga-injector/daemon'
+const ONCE_TILL_UNMOUNT: string = '@@saga-injector/once-till-unmount'
+const RESTART_ON_REMOUNT: string = '@@saga-injector/restart-on-remount'
 
 export {
+  DAEMON,
+  ONCE_TILL_UNMOUNT,
+  RESTART_ON_REMOUNT,
   VITE_APP,
   USER_NAME,
   COPYRIGHT,

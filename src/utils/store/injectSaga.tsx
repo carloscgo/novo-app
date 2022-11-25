@@ -1,8 +1,10 @@
 import React from 'react';
-import hoistNonReactStatics from 'hoist-non-react-statics';
 import { ReactReduxContext } from 'react-redux';
+import hoistNonReactStatics from 'hoist-non-react-statics';
 
 import getInjectors from './sagaInjectors';
+
+type TProp = { key: any, saga: any, mode?: any }
 
 /**
  * Dynamically injects a saga, passes component's props as saga arguments
@@ -17,12 +19,13 @@ import getInjectors from './sagaInjectors';
  *   - constants.ONCE_TILL_UNMOUNT — behaves like 'RESTART_ON_REMOUNT' but never runs it again.
  * @return {object} value
  */
-export default ({ key, saga, mode }) => WrappedComponent => {
+export default ({ key, saga, mode }: TProp) => (WrappedComponent: any) => {
   /**
    *
    */
   class InjectSaga extends React.Component {
     static WrappedComponent = WrappedComponent;
+    injectors
 
     static contextType = ReactReduxContext;
 
@@ -30,7 +33,7 @@ export default ({ key, saga, mode }) => WrappedComponent => {
       WrappedComponent.name ||
       'Component'})`;
 
-    constructor(props, context) {
+    constructor(props: any, context: any) {
       super(props, context)
 
       this.injectors = getInjectors(context.store)
@@ -50,7 +53,7 @@ export default ({ key, saga, mode }) => WrappedComponent => {
   return hoistNonReactStatics(InjectSaga, WrappedComponent)
 };
 
-const useInjectSaga = ({ key, saga, mode = undefined }) => {
+const useInjectSaga = ({ key, saga, mode = undefined }: TProp) => {
   const context = React.useContext(ReactReduxContext)
 
   React.useEffect(() => {

@@ -1,0 +1,139 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Menu /> expect render with onClick event 1`] = `
+<body>
+  <div>
+    <div
+      class="sc-bcXHqe jzLKGg"
+    >
+      <div
+        class="item-width align-items-start null nav"
+      >
+        <div
+          class="nav-link"
+        >
+          <a
+            aria-label="link-menu-1"
+            class="sc-gswNZR cEpWoe"
+            href="/"
+          >
+            item 1
+          </a>
+        </div>
+      </div>
+      <div
+        class="item-width align-items-start null nav"
+      >
+        <div
+          class="sc-dkrFOg ffwown nav-item dropdown"
+        >
+          <a
+            aria-expanded="false"
+            class="dropdown-toggle nav-link"
+            href="#"
+            id="2-nav-dropdown"
+            role="button"
+            tabindex="0"
+          >
+            item 2
+          </a>
+          <div
+            aria-labelledby="2-nav-dropdown"
+            class="dropdown-menu"
+            x-placement="bottom-start"
+          >
+            <div
+              class="sc-bcXHqe jzLKGg"
+            >
+              <div
+                class="item-width align-items-start null nav"
+              >
+                <div
+                  class="nav-link"
+                >
+                  <a
+                    aria-label="link-menu-3"
+                    class="sc-gswNZR cEpWoe"
+                    href="/"
+                  >
+                    item 3
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+`;
+
+exports[`<Menu /> expect render with selected item 1`] = `
+<body>
+  <div>
+    <div
+      class="sc-bcXHqe jzLKGg"
+    >
+      <div
+        class="item-width align-items-start selected nav"
+      >
+        <div
+          class="nav-link"
+        >
+          <a
+            aria-label="link-menu-1"
+            class="sc-gswNZR cEpWoe"
+            href="/"
+          >
+            item 1
+          </a>
+        </div>
+      </div>
+      <div
+        class="item-width align-items-start null nav"
+      >
+        <div
+          class="sc-dkrFOg ffwown nav-item dropdown"
+        >
+          <a
+            aria-expanded="false"
+            class="dropdown-toggle nav-link"
+            href="#"
+            id="2-nav-dropdown"
+            role="button"
+            tabindex="0"
+          >
+            item 2
+          </a>
+          <div
+            aria-labelledby="2-nav-dropdown"
+            class="dropdown-menu"
+            x-placement="bottom-start"
+          >
+            <div
+              class="sc-bcXHqe jzLKGg"
+            >
+              <div
+                class="item-width align-items-start null nav"
+              >
+                <div
+                  class="nav-link"
+                >
+                  <a
+                    aria-label="link-menu-3"
+                    class="sc-gswNZR cEpWoe"
+                    href="/"
+                  >
+                    item 3
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+`;

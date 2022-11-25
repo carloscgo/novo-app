@@ -1,0 +1,78 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Header /> expect render with onSelect event 1`] = `
+<body>
+  <div>
+    <div
+      class="p-0 container-fluid"
+    >
+      <nav
+        class="sc-hLBbgP ASbcf navbar navbar-expand-lg navbar-light"
+      >
+        <div
+          class="container"
+        >
+          <span
+            class="brand navbar-brand"
+          >
+            <a
+              href="/dashboard"
+            >
+              Brand
+            </a>
+          </span>
+          <div
+            class="menu-user navbar-collapse collapse"
+            id="user-navbar-nav"
+          >
+            <div
+              class="navbar-nav"
+            >
+              <div
+                class="nav-item dropdown"
+              >
+                <a
+                  aria-expanded="false"
+                  class="dropdown-toggle nav-link"
+                  href="#"
+                  role="button"
+                  tabindex="0"
+                >
+                  Carlos Camacho
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <nav
+        class="menu-bar navbar navbar-expand-lg navbar-light"
+      >
+        <div
+          class="align-items-start container"
+        >
+          <div
+            class="sc-bcXHqe jzLKGg"
+          >
+            <div
+              class="item-width align-items-start selected navbar-nav"
+            >
+              <div
+                class="nav-link"
+              >
+                <a
+                  aria-label="link-menu-1"
+                  class="sc-gswNZR cEpWoe"
+                  href="/"
+                >
+                  Item 1
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </div>
+</body>
+`;

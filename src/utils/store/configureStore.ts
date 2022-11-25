@@ -17,7 +17,7 @@ import createReducer from './reducers';
  */
 export default function configureStore(state: any, options: any) {
   const composeEnhancers: any = compose
-  const reduxSagaMonitorOptions = {}
+  const reduxSagaMonitorOptions: any = {}
   const initialState = {
     ...state
   }

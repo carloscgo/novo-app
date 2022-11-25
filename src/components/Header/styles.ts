@@ -1,5 +1,5 @@
-import styled from 'styled-components';
 import Navbar from 'react-bootstrap/Navbar';
+import styled from 'styled-components';
 
 const Header = styled(Navbar)`
   background-color: var(--main-color);
