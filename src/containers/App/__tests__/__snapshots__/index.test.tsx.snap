@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<App /> Expect event onClose for Toast 1`] = `
+<body>
+  <div>
+    <div
+      class="sc-bcXHqe eJGtJI d-flex flex-nowrap p-0 container-fluid"
+    >
+      <div />
+      <div
+        aria-label="onClose-action"
+      />
+      <div
+        class="sc-gswNZR iRUAjf p-0"
+      >
+        <div />
+      </div>
+      <div />
+    </div>
+  </div>
+</body>
+`;
+
+exports[`<App /> Expect render with loading 1`] = `
+<body>
+  <div>
+    <div
+      class="sc-bcXHqe eJGtJI d-flex flex-nowrap p-0 container-fluid"
+    >
+      <div />
+      <div
+        aria-label="onClose-action"
+      />
+      <div
+        class="sc-gswNZR iRUAjf p-0"
+      >
+        <div />
+      </div>
+      <div />
+    </div>
+  </div>
+</body>
+`;
+
+exports[`<App /> Expect to not log errors in console 1`] = `
+<body>
+  <div>
+    <div
+      class="sc-bcXHqe eJGtJI d-flex flex-nowrap p-0 container-fluid"
+    >
+      <div />
+      <div
+        aria-label="onClose-action"
+      />
+      <div
+        class="sc-gswNZR iRUAjf p-0"
+      >
+        <div />
+      </div>
+      <div />
+    </div>
+  </div>
+</body>
+`;

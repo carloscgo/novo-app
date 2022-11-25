@@ -1,0 +1,16 @@
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+body {
+  min-height: 100vh;
+  height: max-content;
+
+  #root {
+    min-height: 100vh;
+    height: max-content;
+  }
+
+  .text-bold {
+    font-weight: 500;
+    margin: 0;
+  }
+}
