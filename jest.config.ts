@@ -20,6 +20,7 @@ const jestConfig: JestConfigWithTsJest = {
   ],
   resolver: '<rootDir>/jest.resolver.cjs',
   testRegex: '__tests__/.*\\.test\\.(tsx|ts|js|jsx)$',
+  coveragePathIgnorePatterns: ['<rootDir>/src/main.tsx', '<rootDir>/src/utils/'],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   moduleDirectories: ['node_modules', 'src'],
   transformIgnorePatterns: ['\\.json', '<rootDir>/node_modules/'],
