@@ -82,9 +82,11 @@ const App = ({
 
   const logo = <Logo width={120} height={120} image={image} />
 
+  const onSelect = (e: any) => console.log(e)
+
   return (
     <Container fluid className="d-flex flex-nowrap p-0">
-      <Header brand={VITE_APP.APP_NAME} userName={USER_NAME} menu={data.data} />
+      <Header brand={VITE_APP.APP_NAME} userName={USER_NAME} menu={data.data} onSelect={onSelect} />
 
       <Toast open={toast} message={error} onClose={() => setToast(false)} />
 

@@ -1,13 +1,21 @@
 import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import { useState } from 'react'
 import { Link } from "react-router-dom";
 import {
-  PropsHeader
+  PropsHeader, TItem
 } from '../../utils/interfaces';
 import { searchRoute } from '../../utils/services';
-import NavHeader from './styles';
 import Menu from "../Menu";
+import NavHeader from './styles';
 
-const Header = ({ brand, userName, menu }: PropsHeader) => {
+const Header = ({ brand, userName, menu, onSelect }: PropsHeader) => {
+  const [select, setSelect] = useState<Omit<TItem, 'children'>>({} as TItem)
+
+  const handlerSelect = (e: TItem) => {
+    setSelect(e)
+    onSelect(e)
+  }
+
   return (
     <Container fluid className="p-0">
       <NavHeader expand="lg">
@@ -28,7 +36,7 @@ const Header = ({ brand, userName, menu }: PropsHeader) => {
 
       <Navbar className="menu-bar" expand="lg">
         <Container className="align-items-start">
-          <Menu items={menu} onClick={(e) => console.log(e)} selection={null} />
+          <Menu items={menu} onClick={handlerSelect} selection={select} />
         </Container>
       </Navbar>
     </Container>

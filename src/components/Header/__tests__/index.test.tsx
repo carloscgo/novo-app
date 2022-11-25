@@ -6,7 +6,7 @@
 
 import Header from '../index'
 
-import { render, BrowserRouter } from '../../../../jest.setup'
+import { render, BrowserRouter, fireEvent } from '../../../../jest.setup'
 
 describe('<Header />', () => {
   beforeAll(() => {
@@ -15,7 +15,11 @@ describe('<Header />', () => {
 
   const renderComponent = () => render(
     <BrowserRouter>
-      <Header brand="Brand" userName="Carlos Camacho" menu={[]} />
+      <Header brand="Brand" userName="Carlos Camacho" menu={[{
+        id: '1',
+        name: 'Item 1',
+        children: []
+      }]} onSelect={jest.fn()} />
     </BrowserRouter>
   )
 
@@ -25,5 +29,15 @@ describe('<Header />', () => {
     renderComponent()
 
     expect(spy).not.toHaveBeenCalled()
+  })
+
+  it('expect render with onSelect event', () => {
+    const container = renderComponent()
+
+    const onSelect = container.getByLabelText('link-menu-1')
+
+    fireEvent.click(onSelect)
+
+    expect(container.baseElement).toMatchSnapshot()
   })
 })
