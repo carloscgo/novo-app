@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Header /> expect render with onClick event 1`] = `
+exports[`<Header /> expect render with onSelect event 1`] = `
 <body>
   <div>
     <div
