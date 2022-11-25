@@ -1,9 +1,9 @@
-import React, { memo, useEffect, useState } from 'react';
+import { FunctionComponent, memo, useEffect, useState } from 'react';
 import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
 import get from "lodash/get";
 
-import routes from '../../utils/routes';
 import { VITE_APP, USER_NAME, COPYRIGHT } from '../../utils/constants';
+import routes from '../../utils/routes';
 import {
   connect,
   createStructuredSelector,
@@ -27,20 +27,36 @@ import {
   getMenuRequestAction,
 } from '../../utils/services/menu/actions';
 
-import Container from './styles';
 import {
   PropsApp, PropsRoute, IFunc
 } from '../../utils/interfaces';
 
-import Toast from '../../components/Toast';
-import Loading from "../../components/Loading";
-import Header from "../../components/Header";
-import Footer from "../../components/Footer";
-import Logo from "../../components/Logo";
+import {
+  Toast,
+  Loading,
+  Header,
+  Footer,
+  Logo
+} from "../../components";
 
 import image from '../../assets/react.svg'
 
-const App = ({
+import Container from './styles';
+
+type TRedirect = {
+  location: {
+    pathname: string
+  },
+  navigate: IFunc
+}
+
+export const redirectToHome = ({ location, navigate }: TRedirect) => {
+  if (location.pathname === '/') {
+    navigate(searchRoute('home'))
+  }
+}
+
+export const App = ({
   error,
   menu,
   getMenuRequestActionHandler,
@@ -68,9 +84,7 @@ const App = ({
   }, [error])
 
   useEffect(() => {
-    if (location.pathname === '/') {
-      navigate(searchRoute('home'))
-    }
+    redirectToHome({ location, navigate })
   }, [location.pathname])
 
   useEffect(() => {
@@ -83,12 +97,13 @@ const App = ({
   const logo = <Logo width={120} height={120} image={image} />
 
   const onSelect = (e: any) => console.log(e)
+  const onClose = () => setToast(false)
 
   return (
     <Container fluid className="d-flex flex-nowrap p-0">
       <Header brand={VITE_APP.APP_NAME} userName={USER_NAME} menu={data.data} onSelect={onSelect} />
 
-      <Toast open={toast} message={error} onClose={() => setToast(false)} />
+      <Toast open={toast} message={error} onClose={onClose} />
 
       <Container.Content className={`${data.loading ? 'p-0' : ''}`}>
         <Loading show={data.loading} />
@@ -125,4 +140,4 @@ export default compose(
   withConnect,
   memo
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-)(App) as React.FunctionComponent<any>;
+)(App) as FunctionComponent<any>;
