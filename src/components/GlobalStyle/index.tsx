@@ -1,4 +1,5 @@
-import { createGlobalStyle } from 'styled-components';
+import 'regenerator-runtime/runtime'
+import { createGlobalStyle } from 'styled-components'
 
 const GlobalStyle = createGlobalStyle`
 :root {

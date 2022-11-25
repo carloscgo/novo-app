@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
 import { Toast as BToast, ToastContainer } from 'react-bootstrap'
+import { useState, useEffect } from 'react';
 
 import { PropsToast } from "../../utils/interfaces";
 

@@ -1,13 +1,9 @@
+import { Container } from 'react-bootstrap';
 import styled from 'styled-components';
-import Container from 'react-bootstrap/Container';
 
 const ErrorContainer = styled(Container)`
   width: 100vw;
   height: 100vh;
-  background-repeat: no-repeat;
-  background-position: top center;
-  background-size: contain;
-  background-image: url(${props => props.image});
   display: flex;
   align-items: center;
   justify-content: center;
@@ -18,5 +14,16 @@ const ErrorContainer = styled(Container)`
     top: 50px;
   }
 `;
+
+export const BG = styled.div`
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: contain;
+`
 
 export default ErrorContainer;

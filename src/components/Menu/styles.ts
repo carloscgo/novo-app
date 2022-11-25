@@ -1,6 +1,6 @@
-import styled from 'styled-components';
+import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link } from "react-router-dom";
-import { NavDropdown } from 'react-bootstrap';
+import styled from 'styled-components';
 
 const Container = styled.div`
   width: 100%;

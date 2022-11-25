@@ -1,6 +1,7 @@
+import Container from 'react-bootstrap/Container';
 import styled from 'styled-components';
 
-const Container = styled.div`
+const Loading = styled(Container)`
   width: 100%;
   height: 100%;
   position: relative;
@@ -92,6 +93,6 @@ const Overlay = styled.div`
 
 export {
   Animation,
-  Container,
+  Loading as Container,
   Overlay
 }

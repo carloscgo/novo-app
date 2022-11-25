@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import invariant from 'invariant';
-import { isEmpty, isFunction, isString } from 'lodash';
+import invariant from 'invariant'
+import { isEmpty, isFunction, isString } from 'lodash'
 import createReducer from './reducers';
 
 /**
